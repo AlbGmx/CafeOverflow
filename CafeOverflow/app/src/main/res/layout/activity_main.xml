@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,10 +28,11 @@
         app:layout_constraintVertical_bias="0.539" />
 
     <Button
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesion"
         android:onClick="onLogin"
+        android:text="Iniciar Sesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,9 +41,10 @@
         app:layout_constraintVertical_bias="0.648" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/invitado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onInvitado"
         android:text="Invitado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
