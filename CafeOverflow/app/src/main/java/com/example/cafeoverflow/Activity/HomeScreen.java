@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.cafeoverflow.Adapter.ProductAdapter;
 import com.example.cafeoverflow.Domain.ProductDomain;
 import com.example.cafeoverflow.R;
 
@@ -28,10 +29,13 @@ public class HomeScreen extends AppCompatActivity {
         recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
 
         ArrayList<ProductDomain> product= new ArrayList<>();
-        product.add(new ProductDomain("Coffee", "banner_coffee"));
-        product.add(new ProductDomain("Burguer", "cat_2"));
-        product.add(new ProductDomain("Hotdog", "cat_3"));
+        product.add(new ProductDomain("Coffee", "cat_1"));
+        product.add(new ProductDomain("Food", "cat_2"));
+        product.add(new ProductDomain("Desserts", "cat_3"));
         product.add(new ProductDomain("Drink", "cat_4"));
         product.add(new ProductDomain("Donut", "cat_5"));
+
+        adapter=new ProductAdapter(product);
+        recyclerViewCategoryList.setAdapter(adapter);
     }
 }
