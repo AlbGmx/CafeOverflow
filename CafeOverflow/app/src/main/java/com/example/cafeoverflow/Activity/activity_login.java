@@ -1,8 +1,10 @@
-package com.example.cafeoverflow;
+package com.example.cafeoverflow.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.cafeoverflow.R;
 
 public class activity_login extends AppCompatActivity {
 
