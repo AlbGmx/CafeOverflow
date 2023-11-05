@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.cafeoverflow.Adapter.ProductAdapter;
 import com.example.cafeoverflow.Domain.ProductDomain;
@@ -37,5 +39,10 @@ public class HomeScreen extends AppCompatActivity {
 
         adapter=new ProductAdapter(product);
         recyclerViewCategoryList.setAdapter(adapter);
+    }
+
+    public void onCart(View view){
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
     }
 }
