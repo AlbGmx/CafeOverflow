@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.cafeoverflow.Activity.RecyclerViewProductsInterface;
 import com.example.cafeoverflow.Domain.ProductDomain;
 import com.example.cafeoverflow.R;
 
@@ -20,14 +21,17 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     ArrayList<ProductDomain>productDomains;
 
-    public ProductAdapter(ArrayList<ProductDomain> productDomains) {
+    private final RecyclerViewProductsInterface recyclerViewProductsInterface;
+
+    public ProductAdapter(ArrayList<ProductDomain> productDomains, RecyclerViewProductsInterface recyclerViewProductsInterface) {
         this.productDomains = productDomains;
+        this.recyclerViewProductsInterface = recyclerViewProductsInterface;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_product,parent,false);
-        return new ViewHolder(inflate);
+        return new ViewHolder(inflate, recyclerViewProductsInterface);
     }
 
     @Override
@@ -74,17 +78,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return productDomains.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView productName;
         ImageView productPic;
         ConstraintLayout mainLayout;
 
-        public ViewHolder(@NonNull View itemView){
+        public ViewHolder(@NonNull View itemView, RecyclerViewProductsInterface recyclerViewProductsInterface){
             super(itemView);
             productName=itemView.findViewById(R.id.productName);
             productPic=itemView.findViewById(R.id.productPic);
             mainLayout=itemView.findViewById(R.id.mainLayout);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewProductsInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION){
+                            recyclerViewProductsInterface.onProductClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }
