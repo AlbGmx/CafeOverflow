@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.cafeoverflow.Activity.HomeScreen;
-import com.example.cafeoverflow.Activity.activity_login;
 import com.example.cafeoverflow.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLogin(View view){
-        Intent intent = new Intent(this, activity_login.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
     public void onInvitado(View view){

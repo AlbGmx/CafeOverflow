@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.cafeoverflow.R;
 
-public class activity_login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
