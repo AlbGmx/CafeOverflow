@@ -312,6 +312,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFFFFF"
             android:elevation="3dp"
+            android:onClick="onCart"
             android:src="@drawable/shopping_cart"
             app:backgroundTint="#B17022"
             app:layout_anchor="@id/app_bar"></com.google.android.material.floatingactionbutton.FloatingActionButton>
