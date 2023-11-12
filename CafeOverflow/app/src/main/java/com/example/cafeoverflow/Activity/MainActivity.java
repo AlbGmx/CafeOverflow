@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.cafeoverflow.Activity.HomeScreen;
 import com.example.cafeoverflow.Activity.activity_login;
 import com.example.cafeoverflow.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
