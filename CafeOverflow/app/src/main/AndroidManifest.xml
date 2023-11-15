@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CafeOverflow">
         <activity
+            android:name=".Activity.ProductsSubMenu"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CartActivity"
             android:exported="false" />
         <activity
