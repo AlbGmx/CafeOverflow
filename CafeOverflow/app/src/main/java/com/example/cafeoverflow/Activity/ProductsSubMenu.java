@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.example.cafeoverflow.R;
-
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import java.util.ArrayList;
 
 public class ProductsSubMenu extends AppCompatActivity {
@@ -88,7 +89,18 @@ public class ProductsSubMenu extends AppCompatActivity {
 
         ArrayAdapter<String> arrayAdapter =
                 new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, products);
-
         listProducts.setAdapter(arrayAdapter);
+
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listProducts, View itemView, int position, long id) {
+                String selectedProduct = products.get(position);
+                Intent intent = new Intent(ProductsSubMenu.this, ProductDetailActivity.class);
+                intent.putExtra("productName", selectedProduct);
+                startActivity(intent);
+            }
+        };
+
+        listProducts.setOnItemClickListener(itemClickListener);
     }
 }
