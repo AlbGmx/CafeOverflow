@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cafeoverflow.Adapter.ProductAdapter;
@@ -16,6 +17,10 @@ import com.example.cafeoverflow.R;
 import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity implements RecyclerViewProductsInterface{
+    public enum ProviderType {
+        BASIC
+    }
+
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewCategoryList;
     @Override
@@ -23,7 +28,17 @@ public class HomeScreen extends AppCompatActivity implements RecyclerViewProduct
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        //  Setup
+        Bundle bundle = getIntent().getExtras();
+        String email = (bundle != null) ? bundle.getString("email") : "";
+        String provider = (bundle != null) ? bundle.getString("provider") : "";
+        setUp(email, provider);
         recyclerViewCategory();
+    }
+
+    private void setUp(String email, String provider) {
+        TextView userEmail = findViewById(R.id.userEmail);
+        userEmail.setText(email);
     }
 
     private void recyclerViewCategory() {
