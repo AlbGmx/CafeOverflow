@@ -1,10 +1,15 @@
 package com.example.cafeoverflow.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.cafeoverflow.Adapter.ProductAdapter;
+import com.example.cafeoverflow.Domain.Product;
 import com.example.cafeoverflow.R;
 import android.content.Intent;
 import android.view.View;
@@ -13,31 +18,32 @@ import java.util.ArrayList;
 
 public class ProductsSubMenu extends AppCompatActivity {
 
-    private ArrayList<String> products;
+    private ArrayList<Product> products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_sub_menu);
 
-        products = new ArrayList<String>();
-        ListView listProducts = findViewById(R.id.products_list);
+        products = new ArrayList<>();
+        RecyclerView recyclerView = findViewById(R.id.products_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         int pos = (Integer) getIntent().getExtras().get("position");
 
         switch (pos){
             case 0:
-                products.add("Mocha");
-                products.add("Espresso");
-                products.add("Americano");
-                products.add("Latte");
-                products.add("Cappuccino");
-                products.add("Macchiato");
-                products.add("Flat White");
-                products.add("Cortado");
-                products.add("Affogato");
-                products.add("Cold Brew");
+                products.add(new Product("Mocha", "mocha_id", R.drawable.banner_coffee));
+                products.add(new Product("Espresso","espresso_id", R.drawable.banner_coffee));
+                products.add(new Product("Americano", "americano_id", R.drawable.banner_coffee));
+                products.add(new Product("Latte", "latte_id", R.drawable.banner_coffee));
+                products.add(new Product("Cappuccino", "cappuccino_id", R.drawable.banner_coffee));
+                products.add(new Product("Macchiato", "macchiato_id", R.drawable.banner_coffee));
+                products.add(new Product("Cortado", "americano_id", R.drawable.banner_coffee));
+                products.add(new Product("Affogato", "americano_id", R.drawable.banner_coffee));
+                products.add(new Product("Cold Brew","americano_id", R.drawable.banner_coffee));
                 break;
-            case 1:
+/*            case 1:
                 products.add("Sandwich");
                 products.add("Bagels with Cream Chesse");
                 products.add("Croissants");
@@ -85,22 +91,22 @@ public class ProductsSubMenu extends AppCompatActivity {
                 products.add("Cinnamon Sugar Donut");
                 products.add("Coconut Cream Donut");
                 break;
+*/
         }
 
-        ArrayAdapter<String> arrayAdapter =
-                new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, products);
-        listProducts.setAdapter(arrayAdapter);
+        ProductAdapter adapter = new ProductAdapter(products);
+        recyclerView.setAdapter(adapter);
 
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        adapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> listProducts, View itemView, int position, long id) {
-                String selectedProduct = products.get(position);
+            public void onItemClick(int position) {
+                Product selectedProduct = products.get(position);
                 Intent intent = new Intent(ProductsSubMenu.this, ProductDetailActivity.class);
-                intent.putExtra("productName", selectedProduct);
+                intent.putExtra("productName", selectedProduct.getName());
+                intent.putExtra("productId", selectedProduct.getProductId());
+                intent.putExtra("productImage", selectedProduct.getImageResourceId());
                 startActivity(intent);
             }
-        };
-
-        listProducts.setOnItemClickListener(itemClickListener);
+        });
     }
 }
