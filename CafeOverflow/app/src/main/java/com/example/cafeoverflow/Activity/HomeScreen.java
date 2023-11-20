@@ -8,9 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.cafeoverflow.Adapter.ProductAdapter;
+import com.example.cafeoverflow.Adapter.ProductAdapt;
 import com.example.cafeoverflow.Domain.ProductDomain;
 import com.example.cafeoverflow.R;
 
@@ -53,7 +52,7 @@ public class HomeScreen extends AppCompatActivity implements RecyclerViewProduct
         product.add(new ProductDomain("Drink", "cat_4"));
         product.add(new ProductDomain("Donut", "cat_5"));
 
-        adapter=new ProductAdapter(product, this);
+        adapter=new ProductAdapt(product, this);
         recyclerViewCategoryList.setAdapter(adapter);
     }
 

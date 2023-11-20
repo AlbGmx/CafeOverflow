@@ -7,100 +7,69 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.cafeoverflow.Activity.RecyclerViewProductsInterface;
-import com.example.cafeoverflow.Domain.ProductDomain;
+import com.example.cafeoverflow.Domain.Product;
 import com.example.cafeoverflow.R;
 
 import java.util.ArrayList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    ArrayList<ProductDomain>productDomains;
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private final RecyclerViewProductsInterface recyclerViewProductsInterface;
+    private ArrayList<Product> products;
+    private OnItemClickListener listener;
 
-    public ProductAdapter(ArrayList<ProductDomain> productDomains, RecyclerViewProductsInterface recyclerViewProductsInterface) {
-        this.productDomains = productDomains;
-        this.recyclerViewProductsInterface = recyclerViewProductsInterface;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_product,parent,false);
-        return new ViewHolder(inflate, recyclerViewProductsInterface);
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
-        holder.productName.setText(productDomains.get(position).getProductName());
-        String picUrl = "";
-        switch (position){
-            case 0:{
-                picUrl="banner_coffee";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.product_background));
-                break;
-            }
-            case 1:{
-                picUrl="banner_coffee";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.product_background));
-                break;
-            }
-            case 2:{
-                picUrl="banner_coffee";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.product_background));
-                break;
-            }
-            case 3:{
-                picUrl="banner_coffee";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.product_background));
-                break;
-            }
-            case 4:{
-                picUrl="banner_coffee";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(),R.drawable.product_background));
-                break;
-            }
-        }
-        int drawableResourceId=holder.itemView.getContext().getResources().getIdentifier(picUrl,"drawable",holder.itemView.getContext().getPackageName());
+    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+        public TextView productName;
+        // public ImageView productImage;
 
-        Glide.with(holder.itemView.getContext())
-                .load(drawableResourceId)
-                .into(holder.productPic);
-    }
-
-    @Override
-    public int getItemCount() {
-
-        return productDomains.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView productName;
-        ImageView productPic;
-        ConstraintLayout mainLayout;
-
-        public ViewHolder(@NonNull View itemView, RecyclerViewProductsInterface recyclerViewProductsInterface){
+        public ProductViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-            productName=itemView.findViewById(R.id.productName);
-            productPic=itemView.findViewById(R.id.productPic);
-            mainLayout=itemView.findViewById(R.id.mainLayout);
+            productName = itemView.findViewById(R.id.productName);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    if (recyclerViewProductsInterface != null){
-                        int pos = getAdapterPosition();
-
-                        if (pos != RecyclerView.NO_POSITION){
-                            recyclerViewProductsInterface.onProductClick(pos);
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
                         }
                     }
                 }
             });
         }
+    }
+
+
+    public ProductAdapter(ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    @NonNull
+    @Override
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false);
+        return new ProductViewHolder(view, listener);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        Product currentProduct = products.get(position);
+        holder.productName.setText(currentProduct.getName());
+        //holder.productImage.setImageResource(currentProduct.getImageResourceId());
+    }
+
+    @Override
+    public int getItemCount() {
+        return products.size();
     }
 }
