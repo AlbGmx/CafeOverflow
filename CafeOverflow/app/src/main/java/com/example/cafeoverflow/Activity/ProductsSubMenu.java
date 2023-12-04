@@ -33,65 +33,53 @@ public class ProductsSubMenu extends AppCompatActivity {
 
         switch (pos){
             case 0:
-                products.add(new Product("Mocha", "mocha_id", R.drawable.banner_coffee));
-                products.add(new Product("Espresso","espresso_id", R.drawable.banner_coffee));
                 products.add(new Product("Americano", "americano_id", R.drawable.banner_coffee));
+                products.add(new Product("Espresso", "espresso_id", R.drawable.banner_coffee));
+                products.add(new Product("Espresso Cortado", "expresso_cortado_id", R.drawable.banner_coffee));
+                products.add(new Product("Chai", "chai_id", R.drawable.banner_coffee));
+                products.add(new Product("Tisana", "tisana_id", R.drawable.banner_coffee));
+                products.add(new Product("Vietnamita", "vietnamita_id", R.drawable.banner_coffee));
+                products.add(new Product("Mocha", "mocha_id", R.drawable.banner_coffee));
+                products.add(new Product("Chocolate", "chocolate_id", R.drawable.banner_coffee));
+                products.add(new Product("Matcha", "matcha_id", R.drawable.banner_coffee));
+                products.add(new Product("Capuchino", "cappuccino_id", R.drawable.banner_coffee));
                 products.add(new Product("Latte", "latte_id", R.drawable.banner_coffee));
-                products.add(new Product("Cappuccino", "cappuccino_id", R.drawable.banner_coffee));
-                products.add(new Product("Macchiato", "macchiato_id", R.drawable.banner_coffee));
-                products.add(new Product("Cortado", "americano_id", R.drawable.banner_coffee));
-                products.add(new Product("Affogato", "americano_id", R.drawable.banner_coffee));
-                products.add(new Product("Cold Brew","americano_id", R.drawable.banner_coffee));
                 break;
-/*            case 1:
-                products.add("Sandwich");
-                products.add("Bagels with Cream Chesse");
-                products.add("Croissants");
-                products.add("Breakfast Burritos");
-                products.add("Quiche");
-                products.add("Avocado Toast");
-                products.add("Oatmeal");
-                products.add("Pastries");
-                products.add("Pancakes");
-                products.add("Yogurt Parfait");
+            case 1:
+                products.add(new Product("Mocha", "mocha_F_id", R.drawable.banner_coffee));
+                products.add(new Product("Brownie", "brownie_id", R.drawable.banner_coffee));
+                products.add(new Product("Oreo", "oreo_id", R.drawable.banner_coffee));
+                products.add(new Product("Mazapán", "mazapan_id", R.drawable.banner_coffee));
+                products.add(new Product("Chai", "chai_F_id", R.drawable.banner_coffee));
+                products.add(new Product("Tisana", "tisana_F_id", R.drawable.banner_coffee));
+                products.add(new Product("Matcha", "matcha_F_id", R.drawable.banner_coffee));
+                products.add(new Product("Sabores", "sabores_id", R.drawable.banner_coffee));
                 break;
             case 2:
-                products.add("Brownies");
-                products.add("Cookies");
-                products.add("Cake Slices");
-                products.add("Cheesecake");
-                products.add("Tiramisu");
-                products.add("Cannoli");
-                products.add("Fruit Tarts");
-                products.add("Cupcakes");
-                products.add("Macarons");
-                products.add("Pies");
+                products.add(new Product("Americano", "americano_R_id", R.drawable.banner_coffee));
+                products.add(new Product("Chai", "chai_R_id", R.drawable.banner_coffee));
+                products.add(new Product("Tisana", "tisana_R_id", R.drawable.banner_coffee));
+                products.add(new Product("Vietnamita", "vietnamita_R_id", R.drawable.banner_coffee));
+                products.add(new Product("Mocha", "mocha_R_id", R.drawable.banner_coffee));
+                products.add(new Product("Matcha", "matcha_R_id", R.drawable.banner_coffee));
+                products.add(new Product("Latte", "latte_R_id", R.drawable.banner_coffee));
                 break;
             case 3:
-                products.add("Iced Tea");
-                products.add("Lemonade");
-                products.add("Fruit Smoothies");
-                products.add("Hot Chocolate");
-                products.add("Chai Latte");
-                products.add("Herbal Tea");
-                products.add("Italian Soda");
-                products.add("Fruit Juices");
-                products.add("Sparkling Water");
-                products.add("Milkshakes");
+                products.add(new Product("Brownie", "brownie_D_id", R.drawable.banner_coffee));
+                products.add(new Product("Galleta", "galleta_id", R.drawable.banner_coffee));
+                products.add(new Product("Deli barras", "deli_id", R.drawable.banner_coffee));
+                /*products.add(new Product("Muffin", "muffin_id", R.drawable.banner_coffee));
+                products.add(new Product("Coyotas", "coyotas_id", R.drawable.banner_coffee));
+                products.add(new Product("Empanadas", "empanadas_id", R.drawable.banner_coffee));
+                products.add(new Product("Coricos", "coricos_id", R.drawable.banner_coffee));
+                products.add(new Product("Cheescakes", "cheescakes_id", R.drawable.banner_coffee));*/
                 break;
-            case 4:
-                products.add("Glazed Donut");
-                products.add("Chocolate Frosted Donut");
-                products.add("Sprinkle Donut");
-                products.add("Jelly-Filled Donut");
-                products.add("Boston Cream Donut");
-                products.add("Old-Fashioned Donut");
-                products.add("Maple Bar");
-                products.add("Apple Fritter");
-                products.add("Cinnamon Sugar Donut");
-                products.add("Coconut Cream Donut");
-                break;
-*/
+            /*case 4:
+                products.add(new Product("Guayaba", "guayaba_id", R.drawable.banner_coffee));
+                products.add(new Product("Sandía", "sandia_id", R.drawable.banner_coffee));
+                products.add(new Product("Granada", "granada_id", R.drawable.banner_coffee));
+                products.add(new Product("Toronja", "toronja_id", R.drawable.banner_coffee));
+                break;*/
         }
 
         ProductAdapter adapter = new ProductAdapter(products);

@@ -46,11 +46,12 @@ public class HomeScreen extends AppCompatActivity implements RecyclerViewProduct
         recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
 
         ArrayList<ProductDomain> product= new ArrayList<>();
-        product.add(new ProductDomain("Coffee", "cat_1"));
-        product.add(new ProductDomain("Food", "cat_2"));
-        product.add(new ProductDomain("Desserts", "cat_3"));
-        product.add(new ProductDomain("Drink", "cat_4"));
-        product.add(new ProductDomain("Donut", "cat_5"));
+        product.add(new ProductDomain("BEBIDAS CALIENTES", "cat_1"));
+        product.add(new ProductDomain("FRAPPE", "cat_2"));
+        product.add(new ProductDomain("EN LAS ROCAS", "cat_3"));
+        product.add(new ProductDomain("POSTRES", "cat_4"));
+        //product.add(new ProductDomain("SODAS ITALINAS", "cat_5"));
+
 
         adapter=new ProductAdapt(product, this);
         recyclerViewCategoryList.setAdapter(adapter);
