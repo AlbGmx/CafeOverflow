@@ -186,7 +186,7 @@
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/homeImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/profileImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -261,7 +261,7 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/helpImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -286,7 +286,7 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/settingImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
